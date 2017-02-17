@@ -1,0 +1,36 @@
+<?php
+
+return [
+    'Weather list' => 'Погодные списки',
+    'Weather points list' => 'Список погодных точек',
+    'Name' => 'Название',
+    'Country' => 'Страна',
+    'Updated' => 'Обновлено',
+    'Actions' => 'Действия',
+    'Add point' => 'Добавить точку',
+    'Delete selected' => 'Удалить выбранные',
+    'No weather points found. Please add new' => 'Погодные точки не найдены. Добавьте новую точку',
+    'Weather point update' => 'Обновление погодной точки',
+    'Update' => 'Изменение',
+    'Weather item add or update' => 'Добавление или изменение погодной точки',
+    'You can check your city name and country code in ISO 3166 standard using official weather provider website. Try to find weather data in this form: %link%' =>
+        'Вы можете проверить вводимое название города и кода по стандарту ISO 3166 вводя их на официальном сайте поставщика погоды. Попробуйте найти погодные данные, заполняя форму: %link%',
+    'Set weather point name. Example: Moscow' => 'Укажите название погодной точки. Пример: Москва',
+    'International name' => 'Международное название',
+    'Set city name in ISO 3166 standard. Example: Moscow, London, Washington, Kiev' => 'Укажите название города в формате ISO 3166. Пример: Moscow, London, Washington, Kiev',
+    'International country' => 'Код страны',
+    'Set country name in ISO 3166 standard. Example: ru, uk, us, ua' => 'Укажите международный код страны города в формате ISO 3166. Пример: ru, uk, us, ua',
+    'Set city zip code. This field is not required but can be used if data upper is wrong' => 'Укажите почтовый код города. Это поле не обязательное, но будет использовано если данные выше заполнены не верно',
+    'Api key' => 'Ключ API',
+    'Set your api key from openweathermap.org service. Example: e6s0164zx51e4c50fab325c8ac32eq41' => 'Укажите ваш api ключ для взаимодействия с сервисом openweathermap.org. Пример: e6s0164zx51e4c50fab325c8ac32eq41',
+    'Show map' => 'Показывать карту',
+    'Show weather data on map?' => 'Показывать погодные данные на карте?',
+    'Map center' => 'Центр карты',
+    'Set map center point as lat;lon. Example: 45.21;34.30' => 'Укажите точку центра карты в формате широта;долгота. Пример: 45.21;34.30',
+    'Weather point is successful updated' => 'Погодная точка успешно обновлена',
+    'Weather points are not found' => 'Погодная точка не найдена',
+    'All selected points are successful removed' => 'Все выбранные точки успешно удалены',
+    'Settings is successful updated' => 'Настройки успешно обновлены',
+    'Form validation is failed' => 'Проверка формы перед отправкой выполнена с ошибками',
+    'Api key is empty! Please follow to settings and set openweather api key' => 'Api ключ не заполнен! Пожалуйста, перейдите в раздел настроек и укажите ключ openweather api'
+];

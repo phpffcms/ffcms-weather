@@ -11,7 +11,9 @@ use Ffcms\Core\Arch\ActiveModel;
  * @property array $name
  * @property string $latin_name
  * @property string $country
- * @property int $zip_code
+ * @property string $short
+ * @property string $today
+ * @property string $data
  * @property string $created_at
  * @property string $updated_at
  */
@@ -21,7 +23,6 @@ class Weather extends ActiveModel
         'id' => 'integer',
         'name' => 'serialize',
         'latin_name' => 'string',
-        'country' => 'string',
-        'zip_code' => 'integer'
+        'country' => 'string'
     ];
 }

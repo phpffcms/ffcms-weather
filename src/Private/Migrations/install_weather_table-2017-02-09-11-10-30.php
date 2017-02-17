@@ -20,8 +20,9 @@ class install_weather_table extends Migration implements MigrationInterface
             $table->text('name');
             $table->string('latin_name');
             $table->string('country')->nullable();
-            $table->integer('zip_code')->default(0);
             $table->binary('data')->nullable();
+            $table->binary('short')->nullable();
+            $table->binary('today')->nullable();
             $table->timestamps();
         });
         parent::up();

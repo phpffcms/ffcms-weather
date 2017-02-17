@@ -13,7 +13,7 @@ $this->title = __('Weather list');
 $this->breadcrumbs = [
     Url::to('main/index') => __('Main'),
     Url::to('application/index') => __('Applications'),
-    __('Weather ist')
+    __('Weather list')
 ];
 
 ?>
@@ -23,14 +23,18 @@ $this->breadcrumbs = [
 <h1><?= __('Weather points list') ?></h1>
 <hr />
 <?php
+if ($records->count() < 1) {
+    echo '<p class="alert alert-warning">' . __('No weather points found. Please add new') . '</p>';
+    return;
+}
+
 $items = [];
 foreach ($records as $point) {
     /** @var \Apps\ActiveRecord\Weather $point */
     $items[] = [
         1 => ['text' => $point->id],
-        2 => ['text' => $point->getLocaled('name')],
+        2 => ['text' => $point->getLocaled('name') . ' (' . $point->latin_name . ')'],
         3 => ['text' => $point->country],
-        4 => ['text' => $point->zip_code],
         5 => ['text' => Date::convertToDatetime($point->updated_at, Date::FORMAT_TO_HOUR)],
         6 => ['text' => Url::link(['weather/update', $point->id], '<i class="glyphicon glyphicon-pencil"></i>') . "&nbsp;" .
             Url::link(['weather/delete', $point->id], '<i class="glyphicon glyphicon-trash"></i>'),
@@ -43,7 +47,7 @@ foreach ($records as $point) {
 ?>
 
 <div class="pull-right">
-    <?= Url::link(['weather/update', '0'], __('Add city'), ['class' => 'btn btn-primary']) ?>
+    <?= Url::link(['weather/update', '0'], __('Add point'), ['class' => 'btn btn-primary']) ?>
 </div>
 
 <?= Table::display([
@@ -53,7 +57,6 @@ foreach ($records as $point) {
             ['text' => 'id'],
             ['text' => __('Name')],
             ['text' => __('Country')],
-            ['text' => __('Zip code')],
             ['text' => __('Updated')],
             ['text' => __('Actions')]
         ]

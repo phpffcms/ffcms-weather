@@ -13,7 +13,14 @@
     }
   ],
   "require": {
-    "php": ">=5.5"
+    "php": ">=5.5",
+    "bower-asset/leaflet": "1.0.*@stable"
+  },
+  "extra": {
+    "asset-installer-paths": {
+      "npm-asset-library": "vendor/npm",
+      "bower-asset-library": "vendor/bower"
+    }
   },
   "autoload": {
     "psr-0": { "Apps\\": "src/" }
