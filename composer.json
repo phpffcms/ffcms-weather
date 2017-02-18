@@ -1,6 +1,6 @@
 {
   "name": "phpffcms/ffcms-weather",
-  "description": "Weather application for ffcms 3 to use openweathermap.org api data",
+  "description": "Weather application for ffcms 3 to use openweathermap.org api data and mapbox.com maps",
   "type": "library",
   "keywords": ["php", "ffcms", "app", "weather", "api", "map"],
   "homepage": "http://ffcms.org",

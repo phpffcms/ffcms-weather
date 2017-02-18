@@ -1,6 +1,7 @@
 <?php
 
 use Ffcms\Core\Helper\Date;
+use Ffcms\Core\Helper\Type\Str;
 use Ffcms\Core\Helper\Url;
 
 /** @var \Apps\ActiveRecord\Weather[] $records */
@@ -21,7 +22,7 @@ list($mapLat, $mapLon) = explode(';', $configs['mapCenter']);
     <p class="alert alert-warning"><?= __('No weather data found') ?></p>
     <?php return; ?>
 <?php endif; ?>
-<?php if ((bool)$configs['showMap']): ?>
+<?php if ((bool)$configs['showMap'] && !Str::likeEmpty($configs['mapKey'])): ?>
     <link rel="stylesheet" href="<?= \App::$Alias->scriptUrl ?>/vendor/bower/leaflet/dist/leaflet.css" />
     <script src="<?= \App::$Alias->scriptUrl ?>/vendor/bower/leaflet/dist/leaflet.js"></script>
     <div class="row" style="padding-bottom: 15px;">
@@ -31,7 +32,7 @@ list($mapLat, $mapLon) = explode(';', $configs['mapCenter']);
     </div>
     <script>
         var wmap = L.map('weather-map').setView([<?= (float)$mapLat . ', ' . (float)$mapLon ?>], 8);
-        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiemVubiIsImEiOiJjaXo4bGMyN3EwMDBrMndvZmg2MjZsYjJ3In0.69TxnuNWoT3x3hipw7V3jQ', {
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=<?= $configs['mapKey'] ?>', {
             maxZoom: 18,
             attribution: '',
             id: 'mapbox.streets'

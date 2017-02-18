@@ -210,7 +210,6 @@ class Weather extends AdminController
                 continue;
             }
 
-            // todo: short data from data
             $short = [];
             // list 4 day's
             for ($i=1;$i<=4;$i++) {
@@ -242,7 +241,8 @@ class Weather extends AdminController
         $appData->configs = [
             'key' => '',
             'showMap' => true,
-            'mapCenter' => '45.16;34.42'
+            'mapCenter' => '45.16;34.42',
+            'mapKey' => 'pk.eyJ1IjoiemVubiIsImEiOiJjaXo4bGJlNTQwMDIwMzJvZjBrZnRla29vIn0.6juuODrmHHHwJrjCC1qpbQ'
         ];
         $appData->name = [
             'ru' => 'Погода',

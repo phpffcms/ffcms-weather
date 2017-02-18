@@ -13,6 +13,7 @@ class FormWeatherSettings extends Model
     public $key;
     public $showMap;
     public $mapCenter;
+    public $mapKey;
 
     private $_config;
 
@@ -50,6 +51,7 @@ class FormWeatherSettings extends Model
         return [
             'key' => __('Api key'),
             'showMap' => __('Show map'),
+            'mapKey' => __('Map key'),
             'mapCenter' => __('Map center')
         ];
     }
@@ -62,7 +64,7 @@ class FormWeatherSettings extends Model
     {
         return [
             [['key', 'showMap'], 'required'],
-            ['mapCenter', 'used']
+            [['mapCenter', 'mapKey'], 'used']
         ];
     }
 }

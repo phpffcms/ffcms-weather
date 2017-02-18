@@ -56,7 +56,7 @@ for ($i=1;$i<=4;$i++) {
                 <tbody>
                 <tr>
                     <td><?= __('Temperature') ?></td>
-                    <td><?= $tempNow ?>&deg;C</td>
+                    <td><?= $tempNow ?>&deg;C <i class="owf owf-<?= $weather->weather[0]->id ?>-d"></i></td>
                 </tr>
                 <tr>
                     <td><?= __('Wind') ?></td>
@@ -84,7 +84,7 @@ for ($i=1;$i<=4;$i++) {
         </div>
         <script>
             var wmap = L.map('weather-map').setView([<?= (float)$mapLat . ', ' . (float)$mapLon ?>], 11);
-            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiemVubiIsImEiOiJjaXo4bGMyN3EwMDBrMndvZmg2MjZsYjJ3In0.69TxnuNWoT3x3hipw7V3jQ', {
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=<?= $configs['mapKey'] ?>', {
                 maxZoom: 18,
                 attribution: '',
                 id: 'mapbox.streets'
