@@ -1,14 +1,15 @@
 <?php
 
-/** @var \Apps\ActiveRecord\Weather[] $records */
 use Ffcms\Core\Helper\Date;
 use Ffcms\Core\Helper\Url;
 
+/** @var \Apps\ActiveRecord\Weather[] $records */
 /** @var \Ffcms\Core\Arch\View $this */
 /** @var array $configs */
 /** @var string $viewUri */
 
 App::$Alias->setCustomLibrary('css', $viewUri . '/assets/css/owfont-regular.min.css');
+App::$Alias->setCustomLibrary('css', $viewUri . '/assets/css/weather.css');
 
 $this->title = __('Weather forecasts');
 list($mapLat, $mapLon) = explode(';', $configs['mapCenter']);
@@ -70,7 +71,11 @@ list($mapLat, $mapLon) = explode(';', $configs['mapCenter']);
                             <i class="owf owf-<?= $weatherId ?>-<?= $day ? 'd' : 'n' ?> owf-4x"></i>
                         </div>
                         <div class="col-md-8 nopadding">
-                            <span class="owf-3x"><?= round($info->main->temp,1) ?>&deg;C
+                            <?php
+                                $tempNow = round($info->main->temp, 1);
+                                $tempNow = ($tempNow > 0) ? '+' . $tempNow : $tempNow;
+                            ?>
+                            <span class="owf-3x"><?= $tempNow ?>&deg;C
                         </div>
                     </div>
                     <div class="row">
@@ -111,7 +116,7 @@ list($mapLat, $mapLon) = explode(';', $configs['mapCenter']);
     </div>
     <script>
         L.marker([<?= $info->coord->lat . ', ' . $info->coord->lon ?>], {opacity: '0.5'}).addTo(wmap)
-            .bindTooltip('<i class="owf owf-<?= $weatherId ?>-d"></i> <?= round($info->main->temp,1) ?>', {permanent: true})
+            .bindTooltip('<i class="owf owf-<?= $weatherId ?>-d"></i> <?= $tempNow ?>', {permanent: true})
             .on('click', function(e){
                 $(document).ready(function(){
                     $('#weather-<?= $record->id ?>').addClass('weather-hover');
@@ -123,42 +128,3 @@ list($mapLat, $mapLon) = explode(';', $configs['mapCenter']);
     </script>
 <?php endforeach; ?>
 </div>
-
-<style>
-    .weather-clear > .panel-heading {
-        background-color: #ffc14f;
-        color: #FFFFFF;
-    }
-    .weather-clouds > .panel-heading {
-        background-color: #8e9eb4;
-        color: #FFFFFF;
-    }
-    .weather-rain > .panel-heading {
-        background-color: #5b8ad7;
-        color: #FFFFFF;
-    }
-    .weather-lighting > .panel-heading {
-        background-color: #8477d7;
-        color: #FFFFFF;
-    }
-    .weather-snow > .panel-heading {
-        background-color: #b9dce7;
-        color: #FFFFFF;
-    }
-
-    .panel .weather-main {
-        padding-top: 15px;
-        text-align: center;
-    }
-    .small-padding {
-        padding: 0 5px;
-    }
-    .weather-forecast {
-        border-bottom: 1px #f5f5f5 solid;
-        padding-bottom: 5px;
-        padding-top: 5px;
-    }
-    .weather-hover {
-        background-color: #ddefde;
-    }
-</style>

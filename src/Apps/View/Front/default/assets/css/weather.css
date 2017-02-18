@@ -1,0 +1,78 @@
+/** Weather styles */
+.weather-clear > .panel-heading {
+    background-color: #ffc14f;
+    color: #FFFFFF;
+}
+.weather-clouds > .panel-heading {
+    background-color: #8e9eb4;
+    color: #FFFFFF;
+}
+.weather-rain > .panel-heading {
+    background-color: #5b8ad7;
+    color: #FFFFFF;
+}
+.weather-lighting > .panel-heading {
+    background-color: #8477d7;
+    color: #FFFFFF;
+}
+.weather-snow > .panel-heading {
+    background-color: #b9dce7;
+    color: #FFFFFF;
+}
+
+.panel .weather-main {
+    padding-top: 15px;
+    text-align: center;
+}
+.small-padding {
+    padding: 0 5px;
+}
+.weather-forecast {
+    border-bottom: 1px #f5f5f5 solid;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.weather-hover {
+    background-color: #ddefde;
+}
+
+.weather-details {
+    background-color: #ededed;
+}
+
+.weather-details > div {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.wclear {
+    background-color: #ffc14f;
+    color: #FFFFFF;
+}
+.wclouds {
+    background-color: #8e9eb4;
+    color: #FFFFFF;
+}
+.wrain {
+    background-color: #5b8ad7;
+    color: #FFFFFF;
+}
+.wlighting {
+    background-color: #8477d7;
+    color: #FFFFFF;
+}
+.wsnow {
+    background-color: #b9dce7;
+    color: #FFFFFF;
+}
+.wnclear {
+    background-color: #555555;
+    color: #FFFFFF;
+}

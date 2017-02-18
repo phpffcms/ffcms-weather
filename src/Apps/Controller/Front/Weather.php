@@ -5,8 +5,13 @@ namespace Apps\Controller\Front;
 use Apps\ActiveRecord\Weather as WeatherRecord;
 use Extend\Core\Arch\FrontAppController;
 use Ffcms\Core\App;
+use Ffcms\Core\Exception\NotFoundException;
 use Ffcms\Core\Helper\FileSystem\File;
 
+/**
+ * Class Weather. Show weather points list and weather forecast
+ * @package Apps\Controller\Front
+ */
 class Weather extends FrontAppController
 {
     public $appRoot;
@@ -27,7 +32,7 @@ class Weather extends FrontAppController
             $this->viewUri = '/vendor/phpffcms/ffcms-weather/src/Apps/View/Front/default';
         }
         // load internalization package for current lang
-        $langFile = $this->appRoot . '/I18n/Admin/' . App::$Request->getLanguage() . '/Weather.php';
+        $langFile = $this->appRoot . '/I18n/Front/' . App::$Request->getLanguage() . '/Weather.php';
         if (App::$Request->getLanguage() !== 'en' && File::exist($langFile)) {
             App::$Translate->append($langFile);
         }
@@ -55,9 +60,15 @@ class Weather extends FrontAppController
 
     public function actionShow($id)
     {
+        $record = WeatherRecord::find($id);
+        if ($record === null) {
+            throw new NotFoundException(__('Weather point not found'));
+        }
 
         return $this->view->render('weather/show', [
-
+            'record' => $record,
+            'configs' => $this->getConfigs(),
+            'viewUri' => $this->viewUri
         ], $this->tplDir);
     }
 
