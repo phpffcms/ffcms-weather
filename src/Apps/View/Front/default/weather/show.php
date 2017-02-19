@@ -35,15 +35,16 @@ $tempNow = ($tempNow > 0) ? '+' . $tempNow : $tempNow;
 
 $forecastArray = [];
 // list 4 day's - prepare forecast array to display separated by day
-for ($i=1;$i<=4;$i++) {
+for ($i=0;$i<=4;$i++) {
     // get date to compare with json data
     $dmyGuess = date('Y-m-d', strtotime('+' . $i . ' day'));
     foreach ($forecast->list as $item) {
         if (Str::startsWith($dmyGuess, $item->dt_txt)) {
-            $forecastArray[$dmyGuess][] = $item;
+            $forecastArray[(string)$dmyGuess][] = $item;
         }
     }
 }
+$daysOfWeek = [__('SUN'), __('MON'), __('TUE'), __('WED'), __('THU'), __('FRI'), __('SAT')]; // 0-6
 
 ?>
 <h1><?= $this->title ?></h1>
@@ -100,7 +101,13 @@ for ($i=1;$i<=4;$i++) {
 <?php foreach ($forecastArray as $date => $day): ?>
 <div class="row">
     <div class="col-md-2" style="font-size: 24px;padding-top: 26px;">
-        <p class="text-center"><?= Date::convertToDatetime($date, 'd.m') ?></p>
+        <p class="text-center">
+            <?php
+            $dayNumWeek = Date::convertToDatetime($date, 'w');
+            echo $daysOfWeek[$dayNumWeek];
+            ?><br />
+            <?= Date::convertToDatetime($date, 'd.m') ?>
+        </p>
     </div>
     <div class="col-md-10">
         <div class="row">

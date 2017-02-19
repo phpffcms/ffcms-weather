@@ -47,5 +47,12 @@ return [
     'heavy intensity drizzle rain' => 'сильный моросящий дождь',
     'shower rain and drizzle' => 'ливень и изморось',
     'heavy shower rain and drizzle' => 'сильный ливень и изморось',
-    'shower drizzle' => 'сильная изморось'
+    'shower drizzle' => 'сильная изморось',
+    'SUN' => 'ВС',
+    'MON' => 'ПН',
+    'TUE' => 'ВТ',
+    'WED' => 'СР',
+    'THU' => 'ЧТ',
+    'FRI' => 'ПТ',
+    'SAT' => 'СБ'
 ];
