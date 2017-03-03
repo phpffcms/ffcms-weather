@@ -107,7 +107,7 @@ list($mapLat, $mapLon) = explode(';', $configs['mapCenter']);
                         </div>
                         <div class="col-xs-5 small-padding">
                             <i class="owf owf-956"></i>
-                            <?= $forecast->wind->speed ?> <?= __('m/s') ?>
+                            <?= round($forecast->wind->speed,1) ?> <?= __('m/s') ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
